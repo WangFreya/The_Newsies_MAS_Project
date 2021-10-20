@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'choose_snip_length.dart';
+import 'snippet_form.dart';
 
 class ChooseSnipLength extends StatefulWidget {
   const ChooseSnipLength({Key? key}) : super(key: key);
@@ -15,7 +15,8 @@ class _ChooseSnipLengthState extends State<ChooseSnipLength> {
       appBar: AppBar(
         title: const Text("Choose Snippet Length"),
       ),
-      body: const Center(),
+      body: const Center(
+        child: SnippetForm()),
     );
   }
 }
