@@ -1,0 +1,13 @@
+{
+  "bookInfo": [
+    {
+      "metadata": {
+        "author": ["Fitzgerald, F. Scott"],
+        "title": ["The Great Gatsby"]
+      },
+      "text_id": 2701,
+      "body" :["Testing out the value."]
+  
+    }
+  ]
+}
