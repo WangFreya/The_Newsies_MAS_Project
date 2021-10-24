@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_number_picker/flutter_number_picker.dart';
 
+import 'partitioned_text.dart';
+
 enum Option { byChapter, byPages, byTime }
 
 class SnippetForm extends StatefulWidget {
@@ -76,7 +78,10 @@ class _SnippetFormState extends State<SnippetForm> {
             }),
         ElevatedButton(
           onPressed: () {
-            //TODO: Move to partition screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const PartitionedText()),
+            );
           },
           child: const Text('Submit'),
         )
