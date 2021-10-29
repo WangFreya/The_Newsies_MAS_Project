@@ -1,0 +1,4 @@
+*
+!gutenberg_http/
+!tests/
+!requirements*.txt

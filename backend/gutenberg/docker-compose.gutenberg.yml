@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+
+  gutenberg-api:
+    image: gutenberg_gutenberg-api
+    build:
+      context: .
+      args:
+        PYTHON_VERSION: 3.7
+    ports:
+      - 80:80
+    restart: "${APP_RESTART}"
+    environment:
+      - GUTENBERG_DATA=/data/${APP_DB}
+      - APPINSIGHTS_INSTRUMENTATIONKEY=${APPINSIGHTS_INSTRUMENTATIONKEY}
+      - LOG_LEVEL=${LOG_LEVEL}
+    volumes:
+      - ./:/data
