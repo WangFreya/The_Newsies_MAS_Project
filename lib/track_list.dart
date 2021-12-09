@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsies_sprint3_prototype/music_player.dart';
 import 'package:newsies_sprint3_prototype/track.dart';
 
 class TrackList extends StatefulWidget {
@@ -46,6 +47,8 @@ class _TrackListState extends State<TrackList> {
         onTap: () {
           setState(() {
             selectedTrack ??= _tracks.elementAt(index);
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const MusicPlayer()));
 
             // Navigator.push(
             //     context,
