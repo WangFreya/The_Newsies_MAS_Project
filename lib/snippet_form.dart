@@ -52,13 +52,13 @@ class _SnippetFormState extends State<SnippetForm> {
           value: timeNum,
           maxValue: 30,
           minValue: 0,
-          step: 5,
+          step: 1,
           onChanged: (value) => setState(() => timeNum = value),
         ),
         const Text("minutes"),
         ElevatedButton(
           onPressed: () {
-            uploadFile();
+            //uploadFile();
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const FilePlaylist()),
