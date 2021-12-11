@@ -51,5 +51,3 @@ class _BookRowState extends State<BookRow> {
     );
   }
 }
-
-
