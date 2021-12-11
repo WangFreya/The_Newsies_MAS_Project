@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newsies_sprint3_prototype/play_podcast.dart';
 import 'package:newsies_sprint3_prototype/track.dart';
 
 class PlaylistHeader extends StatefulWidget {
@@ -10,9 +11,13 @@ class PlaylistHeader extends StatefulWidget {
 }
 
 class _PlaylistHeaderState extends State<PlaylistHeader> {
-  final track1 = Track(title: "Audio File 1", time: "5:06");
-  final track2 = Track(title: "Audio File 2", time: "4:57");
-  final track3 = Track(title: "Audio File 3", time: "5:12");
+  final track1 = Track(
+      title: "Part 1",
+      time: "5:03",
+      url:
+          "https://mas-newsies-output.s3.us-east-2.amazonaws.com/gatsby_snip.txt.mp3");
+  final track2 = Track(title: "Part 2", time: "4:57", url: "");
+  final track3 = Track(title: "Part 3", time: "5:12", url: "");
   late List<Track> _tracks;
   late String numFiles;
 
@@ -21,13 +26,6 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
     super.initState();
     _tracks = <Track>[track1, track2, track3];
   }
-
-  // String calcRuntime() {
-  //   int runtime;
-  //   _tracks.forEach((Track track) {
-  //     min = track.time[0];
-  //   })
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +36,7 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
             child: Column(
           children: [
             const Text(
-              "File you want to listen to",
+              "The Great Gatsby",
               style: TextStyle(height: 5, fontSize: 24),
             ),
             const SizedBox(height: 12.0),
@@ -47,11 +45,12 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
                 const SizedBox(width: 20),
                 TextButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) =>
-                      //           ListenerScreen(track: _tracks[0])));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                PlayPodcast(track: _tracks[0])),
+                      );
                     },
                     child: const Text('PLAY'),
                     style: TextButton.styleFrom(

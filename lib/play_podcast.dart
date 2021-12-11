@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:newsies_sprint3_prototype/track.dart';
 
 class PlayPodcast extends StatefulWidget {
-  const PlayPodcast({Key? key}) : super(key: key);
+  final Track track;
+
+  const PlayPodcast({Key? key, required this.track}) : super(key: key);
 
   @override
   _PlayPodcastState createState() => _PlayPodcastState();
@@ -11,8 +14,7 @@ class PlayPodcast extends StatefulWidget {
 class _PlayPodcastState extends State<PlayPodcast> {
   AudioPlayer audioPlayer = AudioPlayer();
   PlayerState audioPlayerState = PlayerState.PAUSED;
-  String url = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3';
-
+  //String url = track.url
   int timeProgress = 0;
   int audioDuration = 0;
 
@@ -39,8 +41,8 @@ class _PlayPodcastState extends State<PlayPodcast> {
       });
     });
 
-    audioPlayer.setUrl(
-        url); // Triggers the onDurationChanged listener and sets the max duration string
+    audioPlayer.setUrl(widget.track
+        .url); // Triggers the onDurationChanged listener and sets the max duration string
     audioPlayer.onDurationChanged.listen((Duration duration) {
       setState(() {
         audioDuration = duration.inSeconds;
@@ -62,7 +64,7 @@ class _PlayPodcastState extends State<PlayPodcast> {
 
   playMusic() async {
     // Add the parameter "isLocal: true" if you want to access a local file
-    await audioPlayer.play(url);
+    await audioPlayer.play(widget.track.url);
   }
 
   pauseMusic() async {

@@ -11,9 +11,13 @@ class TrackList extends StatefulWidget {
 }
 
 class _TrackListState extends State<TrackList> {
-  final track1 = Track(title: "Audio File 1", time: "5:06");
-  final track2 = Track(title: "Audio File 2", time: "4:57");
-  final track3 = Track(title: "Audio File 3", time: "5:12");
+  final track1 = Track(
+      title: "Part 1",
+      time: "5:03",
+      url:
+          "https://mas-newsies-output.s3.us-east-2.amazonaws.com/gatsby_snip.txt.mp3");
+  final track2 = Track(title: "Part 2", time: "4:57", url: "");
+  final track3 = Track(title: "Part 3", time: "5:12", url: "");
   late List<Track> _tracks;
 
   @override
@@ -51,14 +55,9 @@ class _TrackListState extends State<TrackList> {
 
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const PlayPodcast()),
+              MaterialPageRoute(
+                  builder: (context) => PlayPodcast(track: _tracks[index])),
             );
-
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (context) =>
-            //             ListenerScreen(track: _tracks[index])));
           });
         });
   }
