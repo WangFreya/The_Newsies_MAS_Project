@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsies_sprint3_prototype/file_playlist.dart';
 import 'choose_snip_length.dart';
 
 class BookRow extends StatefulWidget {
@@ -44,7 +45,7 @@ class _BookRowState extends State<BookRow> {
           //navigate to new route
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const ChooseSnipLength()),
+            MaterialPageRoute(builder: (context) => const FilePlaylist()),
           );
         });
       },

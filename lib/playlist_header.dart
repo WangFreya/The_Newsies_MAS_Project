@@ -19,17 +19,18 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
   final track2 = Track(title: "Part 2", time: "4:57", url: "");
   final track3 = Track(title: "Part 3", time: "5:12", url: "");
   late List<Track> _tracks;
-  late String numFiles;
+  late int numFiles;
+  late int runtime;
 
   @override
   void initState() {
     super.initState();
-    _tracks = <Track>[track1, track2, track3];
   }
 
   @override
   Widget build(BuildContext context) {
-    numFiles = _tracks.length.toString();
+    numFiles = 12;
+    runtime = numFiles * 5;
     return Row(
       children: [
         Expanded(
@@ -57,7 +58,10 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)))),
                 SizedBox(width: 200.0),
-                Text(numFiles + " files | 15 min")
+                Text(numFiles.toString() +
+                    " files | " +
+                    runtime.toString() +
+                    " min")
               ],
             )
           ],
