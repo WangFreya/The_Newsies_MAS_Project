@@ -13,14 +13,15 @@ class BookRow extends StatefulWidget {
 class _BookRowState extends State<BookRow> {
   //final _books = <String>['The Great Gatsby', 'Jane Eyre', 'The Fifth Season'];
 
-  ReadingMat _savedReading = ReadingMat(title: '', textFile: '');
+  ReadingMat _savedReading =
+      ReadingMat(title: '', textFile: '', snippetLength: 0);
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   final List<ReadingMat> _readings = [
-    ReadingMat(title: 'Example 1', textFile: 'File 1'),
-    ReadingMat(title: 'Example 2', textFile: 'File 1'),
-    ReadingMat(title: 'Example 3', textFile: 'File 1'),
-    ReadingMat(title: 'Example 4', textFile: 'File 1')
+    ReadingMat(title: 'Example 1', textFile: 'File 1', snippetLength: 5),
+    ReadingMat(title: 'Example 2', textFile: 'File 1', snippetLength: 5),
+    ReadingMat(title: 'Example 3', textFile: 'File 1', snippetLength: 5),
+    ReadingMat(title: 'Example 4', textFile: 'File 1', snippetLength: 5),
   ];
 
   @override
@@ -54,7 +55,8 @@ class _BookRowState extends State<BookRow> {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => FilePlaylist(reading: _savedReading)),
+                builder: (context) =>
+                    FilePlaylist(reading: _savedReading)),
           );
         });
       },
