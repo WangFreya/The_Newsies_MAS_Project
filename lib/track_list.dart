@@ -7,7 +7,8 @@ import 'package:http/http.dart' as http;
 import 'package:mp3_info/mp3_info.dart';
 
 class TrackList extends StatefulWidget {
-  const TrackList({Key? key})
+  final List<Track> tracks;
+  const TrackList({Key? key, required this.tracks})
       : super(
           key: key,
         );
@@ -17,35 +18,34 @@ class TrackList extends StatefulWidget {
 }
 
 class _TrackListState extends State<TrackList> {
-  final List<Track> _tracks = [];
   late String tempTime = '';
 
-  @override
-  void initState() {
-    for (var i = 0; i < 12; i++) {
-      // int time = 0;
-      String url =
-          "https://mas-newsies-output.s3.amazonaws.com/05TheGreatGatsby_segment_" +
-              i.toString() +
-              ".txt.mp3";
-      //String time = "0";
-      // getTime(url).then((value) {
-      //   time = value!;
-      // });
-      getTime(url);
-      _tracks.add(
-          Track(title: "Part " + (i + 1).toString(), time: tempTime, url: url));
-    }
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   for (var i = 0; i < 12; i++) {
+  //     // int time = 0;
+  //     String url =
+  //         "https://mas-newsies-output.s3.amazonaws.com/05TheGreatGatsby_segment_" +
+  //             i.toString() +
+  //             ".txt.mp3";
+  //     //String time = "0";
+  //     // getTime(url).then((value) {
+  //     //   time = value!;
+  //     // });
+  //     getTime(url);
+  //     _tracks.add(
+  //         Track(title: "Part " + (i + 1).toString(), time: tempTime, url: url));
+  //   }
+  //   super.initState();
+  // }
 
-  void getTime(String url) async {
-    AudioPlayer player = AudioPlayer();
-    var duration = await player.setUrl(url);
-    setState(() {
-      tempTime = duration!.inSeconds.toString();
-    });
-  }
+  // void getTime(String url) async {
+  //   AudioPlayer player = AudioPlayer();
+  //   var duration = await player.setUrl(url);
+  //   setState(() {
+  //     tempTime = duration!.inSeconds.toString();
+  //   });
+  // }
 
   Track? selectedTrack;
 
@@ -57,7 +57,7 @@ class _TrackListState extends State<TrackList> {
   Widget _buildTrackList() {
     return Expanded(
         child: ListView.builder(
-      itemCount: _tracks.length,
+      itemCount: widget.tracks.length,
       padding: const EdgeInsets.all(16.0),
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
@@ -69,16 +69,17 @@ class _TrackListState extends State<TrackList> {
 
   Widget _buildTrack(int index) {
     return ListTile(
-        title: Text(_tracks.elementAt(index).title),
-        trailing: Text(_tracks.elementAt(index).time),
+        title: Text(widget.tracks.elementAt(index).title),
+        trailing: Text(widget.tracks.elementAt(index).time),
         onTap: () {
           setState(() {
-            selectedTrack ??= _tracks.elementAt(index);
+            selectedTrack ??= widget.tracks.elementAt(index);
 
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => PlayPodcast(track: _tracks[index])),
+                  builder: (context) =>
+                      PlayPodcast(track: widget.tracks[index])),
             );
           });
         });
