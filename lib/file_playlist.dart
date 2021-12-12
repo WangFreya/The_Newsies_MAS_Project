@@ -50,6 +50,7 @@ class _FilePlaylistState extends State<FilePlaylist> {
         children: <Widget>[
           PlaylistHeader(
             tracks: _tracks,
+            reading: widget.reading,
           ),
           TrackList(
             tracks: _tracks,

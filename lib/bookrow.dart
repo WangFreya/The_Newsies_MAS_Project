@@ -18,10 +18,11 @@ class _BookRowState extends State<BookRow> {
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   final List<ReadingMat> _readings = [
-    ReadingMat(title: 'Example 1', textFile: 'File 1', snippetLength: 5),
-    ReadingMat(title: 'Example 2', textFile: 'File 1', snippetLength: 5),
-    ReadingMat(title: 'Example 3', textFile: 'File 1', snippetLength: 5),
-    ReadingMat(title: 'Example 4', textFile: 'File 1', snippetLength: 5),
+    ReadingMat(title: 'The Great Gatsby', textFile: 'TheGreatGatsby.txt'),
+    ReadingMat(title: 'The Selection of a Reseach Design', textFile: 'File 1'),
+    ReadingMat(
+        title: 'Blockchain and the Future of the Internet', textFile: 'File 1'),
+    ReadingMat(title: 'Contextual Interviews', textFile: 'File 1')
   ];
 
   @override
@@ -55,8 +56,7 @@ class _BookRowState extends State<BookRow> {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    FilePlaylist(reading: _savedReading)),
+                builder: (context) => FilePlaylist(reading: _savedReading)),
           );
         });
       },

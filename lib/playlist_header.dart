@@ -6,7 +6,9 @@ import 'package:newsies_sprint3_prototype/reading_mat.dart';
 
 class PlaylistHeader extends StatefulWidget {
   final List<Track> tracks;
-  const PlaylistHeader({Key? key, required this.tracks}) : super(key: key);
+  final ReadingMat reading;
+  const PlaylistHeader({Key? key, required this.tracks, required this.reading})
+      : super(key: key);
 
   @override
   _PlaylistHeaderState createState() => _PlaylistHeaderState();
@@ -30,8 +32,8 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
         Expanded(
             child: Column(
           children: [
-            const Text(
-              "The Great Gatsby",
+            Text(
+              widget.reading.title,
               style: TextStyle(height: 5, fontSize: 24),
             ),
             const SizedBox(height: 12.0),
