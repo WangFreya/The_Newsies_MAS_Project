@@ -62,15 +62,6 @@ class _PlayPodcastState extends State<PlayPodcast> {
     super.dispose();
   }
 
-  playMusic() async {
-    // Add the parameter "isLocal: true" if you want to access a local file
-    await audioPlayer.play(widget.track.url);
-  }
-
-  pauseMusic() async {
-    await audioPlayer.pause();
-  }
-
   void seekToSec(int sec) {
     Duration newPos = Duration(seconds: sec);
     audioPlayer
@@ -118,5 +109,14 @@ class _PlayPodcastState extends State<PlayPodcast> {
             ],
           )),
     );
+  }
+
+  playMusic() async {
+    // Add the parameter "isLocal: true" if you want to access a local file
+    await audioPlayer.play(widget.track.url);
+  }
+
+  pauseMusic() async {
+    await audioPlayer.pause();
   }
 }

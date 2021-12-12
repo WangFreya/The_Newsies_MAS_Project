@@ -18,9 +18,11 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Snippet Learning Prototype'),
         ),
-        body: const Center(
-          child: BookRow(),
-        ),
+        body: Center(
+            child: Column(children: <Widget>[
+          const Expanded(child: BookRow()),
+          TextButton(onPressed: () {}, child: const Text('Upload File'))
+        ])),
       ),
     );
   }
