@@ -11,19 +11,20 @@ class TrackList extends StatefulWidget {
 }
 
 class _TrackListState extends State<TrackList> {
-  final track1 = Track(
-      title: "Part 1",
-      time: "5:03",
-      url:
-          "https://mas-newsies-output.s3.us-east-2.amazonaws.com/gatsby_snip.txt.mp3");
-  final track2 = Track(title: "Part 2", time: "4:57", url: "");
-  final track3 = Track(title: "Part 3", time: "5:12", url: "");
-  late List<Track> _tracks;
+  List<Track>? _tracks;
 
   @override
   void initState() {
     super.initState();
-    _tracks = <Track>[track1, track2, track3];
+    for (var i = 0; i < 12; i++) {
+      _tracks?.add(Track(
+          title: "Part " + i.toString(),
+          time: "5:00",
+          url:
+              "https://mas-newsies-output.s3.amazonaws.com/05TheGreatGatsby_segment_" +
+                  i.toString() +
+                  ".txt.mp3"));
+    }
   }
 
   Track? selectedTrack;
@@ -35,7 +36,7 @@ class _TrackListState extends State<TrackList> {
 
   Widget _buildTrackList() {
     return ListView.builder(
-      itemCount: _tracks.length,
+      itemCount: _tracks?.length,
       padding: const EdgeInsets.all(16.0),
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
@@ -47,16 +48,16 @@ class _TrackListState extends State<TrackList> {
 
   Widget _buildTrack(int index) {
     return ListTile(
-        title: Text(_tracks.elementAt(index).title),
-        trailing: Text(_tracks.elementAt(index).time),
+        title: Text(_tracks!.elementAt(index).title),
+        trailing: Text(_tracks!.elementAt(index).time),
         onTap: () {
           setState(() {
-            selectedTrack ??= _tracks.elementAt(index);
+            selectedTrack ??= _tracks!.elementAt(index);
 
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => PlayPodcast(track: _tracks[index])),
+                  builder: (context) => PlayPodcast(track: _tracks![index])),
             );
           });
         });
