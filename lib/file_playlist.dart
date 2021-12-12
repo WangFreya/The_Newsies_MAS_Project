@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:newsies_sprint3_prototype/playlist_header.dart';
+import 'package:newsies_sprint3_prototype/reading_mat.dart';
 import 'package:newsies_sprint3_prototype/track_list.dart';
 
 class FilePlaylist extends StatefulWidget {
-  const FilePlaylist({Key? key}) : super(key: key);
+  final ReadingMat reading;
+  const FilePlaylist({Key? key, required this.reading}) : super(key: key);
 
   @override
   _FilePlaylistState createState() => _FilePlaylistState();
