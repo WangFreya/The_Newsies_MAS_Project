@@ -18,11 +18,20 @@ class _BookRowState extends State<BookRow> {
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   final List<ReadingMat> _readings = [
-    ReadingMat(title: 'The Great Gatsby', textFile: 'TheGreatGatsby.txt'),
-    ReadingMat(title: 'The Selection of a Reseach Design', textFile: 'File 1'),
     ReadingMat(
-        title: 'Blockchain and the Future of the Internet', textFile: 'File 1'),
-    ReadingMat(title: 'Contextual Interviews', textFile: 'File 1')
+        title: 'The Great Gatsby',
+        textFile: 'TheGreatGatsby',
+        snippetLength: 5),
+    ReadingMat(
+        title: 'The Selection of a Reseach Design',
+        textFile: 'File 1',
+        snippetLength: 5),
+    ReadingMat(
+        title: 'Blockchain and the Future of the Internet',
+        textFile: 'File 1',
+        snippetLength: 5),
+    ReadingMat(
+        title: 'Contextual Interviews', textFile: 'File 1', snippetLength: 5)
   ];
 
   @override

@@ -18,12 +18,15 @@ class _FilePlaylistState extends State<FilePlaylist> {
   String tempTime = '';
   @override
   void initState() {
+    String filename =
+        "0" + widget.reading.snippetLength.toString() + widget.reading.textFile;
     for (var i = 0; i < 12; i++) {
       // int time = 0;
-      String url =
-          "https://mas-newsies-output.s3.amazonaws.com/05TheGreatGatsby_segment_" +
-              i.toString() +
-              ".txt.mp3";
+      String url = "https://mas-newsies-output.s3.amazonaws.com/" +
+          filename +
+          "_segment_" +
+          i.toString() +
+          ".txt.mp3";
       //String time = "0";
       // getTime(url).then((value) {
       //   time = value!;

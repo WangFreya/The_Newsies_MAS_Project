@@ -26,7 +26,7 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
   @override
   Widget build(BuildContext context) {
     numFiles = widget.tracks.length;
-    runtime = numFiles * 5;
+    runtime = numFiles * widget.reading.snippetLength;
     return Row(
       children: [
         Expanded(
