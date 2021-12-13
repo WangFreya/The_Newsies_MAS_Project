@@ -5,22 +5,16 @@ import 'package:newsies_sprint3_prototype/track.dart';
 import 'package:newsies_sprint3_prototype/reading_mat.dart';
 
 class PlaylistHeader extends StatefulWidget {
-  
-  const PlaylistHeader({Key? key}) : super(key: key);
+  final List<Track> tracks;
+  final ReadingMat reading;
+  const PlaylistHeader({Key? key, required this.tracks, required this.reading})
+      : super(key: key);
 
   @override
   _PlaylistHeaderState createState() => _PlaylistHeaderState();
 }
 
 class _PlaylistHeaderState extends State<PlaylistHeader> {
-  final track1 = Track(
-      title: "Part 1",
-      time: "5:03",
-      url:
-          "https://mas-newsies-output.s3.us-east-2.amazonaws.com/gatsby_snip.txt.mp3");
-  final track2 = Track(title: "Part 2", time: "4:57", url: "");
-  final track3 = Track(title: "Part 3", time: "5:12", url: "");
-  late List<Track> _tracks;
   late int numFiles;
   late int runtime;
 
@@ -31,15 +25,15 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
 
   @override
   Widget build(BuildContext context) {
-    numFiles = 12;
-    runtime = numFiles * 5;
+    numFiles = widget.tracks.length;
+    runtime = numFiles * widget.reading.snippetLength;
     return Row(
       children: [
         Expanded(
             child: Column(
           children: [
-            const Text(
-              "The Great Gatsby",
+            Text(
+              widget.reading.title,
               style: TextStyle(height: 5, fontSize: 24),
             ),
             const SizedBox(height: 12.0),
@@ -52,7 +46,7 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                PlayPodcast(track: _tracks[0])),
+                                PlayPodcast(track: widget.tracks[0])),
                       );
                     },
                     child: const Text('PLAY'),
